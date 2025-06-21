@@ -8,7 +8,7 @@ public class EncryptionDriver {
         JFrame frame = new JFrame("Hackathon 2025");
         frame.setVisible(true);
         frame.setResizable(false);
-        frame.setSize(600,650);
+        frame.setSize(600,700);
         frame.setLocation(200,200);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setContentPane(new EncryptionPanel());

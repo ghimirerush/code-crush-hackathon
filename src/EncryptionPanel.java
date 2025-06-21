@@ -117,6 +117,10 @@ public class EncryptionPanel extends JPanel{
         result2 = new JLabel(":Decrypted Message:");
         result2.setFont(new Font(uniFont , Font.BOLD, 20));
         add(result2);
+
+        JButton linkButton = new JButton("Learn More About Caesar Cipher");
+        linkButton.addActionListener(new linkListener());
+        add(linkButton);
     }
 
     private class encryptListener implements ActionListener {
