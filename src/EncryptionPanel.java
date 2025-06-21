@@ -21,9 +21,9 @@ public class EncryptionPanel extends JPanel{
 
     public void paintComponent(Graphics g) {
 
-        g.setColor(new Color(66, 91, 99));
+        g.setColor(new Color(147, 185, 194));
         g.fillRect(0,0,600,600);
-        g.setColor(new Color(62, 85, 92));
+        g.setColor(new Color(132, 165, 173));
         g.fillRect(0,275,600,500);
     }
     public EncryptionPanel() {
@@ -58,7 +58,7 @@ public class EncryptionPanel extends JPanel{
         add(Spacer3);
 
         JLabel inputLabel = new JLabel("Message: ");
-        inputLabel.setFont(new Font("monospaced" , Font.BOLD, 20));
+        inputLabel.setFont(new Font(uniFont , Font.BOLD, 20));
         add(inputLabel);
 
         userInput = new JTextField("" , 10);
@@ -66,7 +66,7 @@ public class EncryptionPanel extends JPanel{
         add(userInput);
 
         JLabel shiftLabel = new JLabel("Shift: ");
-        shiftLabel.setFont(new Font("monospaced" , Font.BOLD, 20));
+        shiftLabel.setFont(new Font(uniFont , Font.BOLD, 20));
         add(shiftLabel);
 
         shiftInput = new JTextField("" , 10);
@@ -96,6 +96,9 @@ public class EncryptionPanel extends JPanel{
         JLabel Spacer10 = new JLabel("                             ");
         Spacer10.setFont(new Font(uniFont, Font.BOLD, 42));
 
+        JLabel LearnMoreSpacer = new JLabel("                         ");
+        LearnMoreSpacer.setFont(new Font(uniFont, Font.BOLD, 42));
+
         add(Spacer6);
 
         JButton encryptButton2 = new JButton("Decrypt");
@@ -105,7 +108,7 @@ public class EncryptionPanel extends JPanel{
         add(Spacer8);
 
         JLabel inputLabel2 = new JLabel("Message: ");
-        inputLabel2.setFont(new Font("monospaced" , Font.BOLD, 20));
+        inputLabel2.setFont(new Font(uniFont , Font.BOLD, 20));
         add(inputLabel2);
 
         userInput2 = new JTextField("" , 10);
@@ -118,9 +121,13 @@ public class EncryptionPanel extends JPanel{
         result2.setFont(new Font(uniFont , Font.BOLD, 20));
         add(result2);
 
+        add(LearnMoreSpacer);
+
         JButton linkButton = new JButton("Learn More About Caesar Cipher");
         linkButton.addActionListener(new linkListener());
         add(linkButton);
+
+
     }
 
     private class encryptListener implements ActionListener {
@@ -131,7 +138,6 @@ public class EncryptionPanel extends JPanel{
             if (word.isEmpty())
             {
                 JOptionPane.showMessageDialog(null, "Please enter a message to encrypt.", "Input Error", JOptionPane.ERROR_MESSAGE);
-                return;
             }
             if (!word.matches("[a-zA-Z ]+")) {
                 JOptionPane.showMessageDialog(null, "Only letters are allowed for encryption.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
@@ -139,7 +145,10 @@ public class EncryptionPanel extends JPanel{
             if (shift.isEmpty())
             {
                 JOptionPane.showMessageDialog(null, "Please enter a number for shift.", "Shift Error", JOptionPane.ERROR_MESSAGE);
-                return;
+            }
+            if(!shift.matches("\\d+"))
+            {
+                JOptionPane.showMessageDialog(null, "Only positive numbers are allowed for shift.", "Shift Error", JOptionPane.ERROR_MESSAGE);
             }
             encryptor.setShift(Integer.parseInt(shift));
             word = encryptor.cipher(word);
@@ -155,11 +164,19 @@ public class EncryptionPanel extends JPanel{
             if (word.isEmpty())
             {
                 JOptionPane.showMessageDialog(null, "Please enter a message to decrypt.", "Input Error", JOptionPane.ERROR_MESSAGE);
-                return;
             }
             if (!word.matches("[a-zA-Z ]+")) {
                 JOptionPane.showMessageDialog(null, "Only letters are allowed for decryption.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
             }
+            if (shift.isEmpty())
+            {
+                JOptionPane.showMessageDialog(null, "Please enter a number for shift.", "Shift Error", JOptionPane.ERROR_MESSAGE);
+            }
+            if(!shift.matches("\\d+"))
+            {
+                JOptionPane.showMessageDialog(null, "Only positive numbers are allowed for shift.", "Shift Error", JOptionPane.ERROR_MESSAGE);
+            }
+
             decryptor.setShift(Integer.parseInt(shift) * -1);
             word = decryptor.cipher(word);
             result2.setText(word);
