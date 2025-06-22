@@ -115,13 +115,13 @@ public class EncryptionPanel extends JPanel{
         userInput2.setHorizontalAlignment(SwingConstants.RIGHT);
         add(userInput2);
 
-        add(Spacer9);
+       add(Spacer9);
 
         result2 = new JLabel(":Decrypted Message:");
         result2.setFont(new Font(uniFont , Font.BOLD, 20));
         add(result2);
 
-        add(LearnMoreSpacer);
+       add(LearnMoreSpacer);
 
         JButton linkButton = new JButton("Learn More About Caesar Cipher");
         linkButton.addActionListener(new linkListener());
