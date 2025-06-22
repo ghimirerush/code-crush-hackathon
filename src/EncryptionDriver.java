@@ -11,6 +11,7 @@ public class EncryptionDriver {
         frame.setSize(600,700);
         frame.setLocation(200,200);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setAlwaysOnTop(true);
         frame.setContentPane(new EncryptionPanel());
 
     }
