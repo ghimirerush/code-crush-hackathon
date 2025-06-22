@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import javax.swing.*;
 
 public class EncryptionDriver {
